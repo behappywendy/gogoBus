@@ -1,0 +1,22 @@
+:root{
+  --primary:rgba(72, 106, 232, 1);
+  --default: rgba(0, 119, 255, 1);
+  --compare:rgba(255, 196, 78, 1);
+  --dark: rgba(30, 34, 43, 1);
+  --tint: #99badd;
+  --text-color-gary:#363636;
+  --text-color-gary900:rgba(125, 125, 125, 1);
+  --text-color-gary700:rgba(217, 217, 217, 1);
+  --input-background:#fff;
+  --hoverButton:rgba(42, 74, 195, 1);
+  --primary_background:#F5F6FF;
+
+  
+}
+:root.dark {
+  --primary: #1e1e1e;
+  --hoverButton:rgb(204, 211, 236);
+  --primary_background:#adaeb9;
+  
+}
+
