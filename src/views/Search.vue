@@ -1,4 +1,4 @@
 <template>
-  <h2>路線搜尋</h2>
+  <h2>附近搜尋</h2>
 </template>
 <style lang="scss" scoped></style>

@@ -1,5 +1,6 @@
 <template>
   <h2>首頁</h2>
+  <!-- <h2>首頁</h2> -->
 </template>
 
 <script>
@@ -13,14 +14,17 @@ export default {
 };
 </script>
 <style scope lang="scss">
-.content {
-  background: var(--primary);
-  height: 800px;
-  p {
-    font-size: 21px;
-    font-weight: 900;
-    text-align: center;
-    color: #fff;
-  }
+h2 {
+  color: var(--content-nav);
 }
+// .content {
+//   // background: var(--primary);
+//   height: 800px;
+//   p {
+//     font-size: 21px;
+//     font-weight: 900;
+//     text-align: center;
+//     color: #fff;
+//   }
+// }
 </style>
