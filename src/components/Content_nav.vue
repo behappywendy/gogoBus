@@ -16,6 +16,7 @@ div {
   font-family: "Roboto", sans-serif;
   color: var(--primary);
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 nav {
