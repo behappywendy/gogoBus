@@ -15,7 +15,7 @@
       /></router-link>
     </li>
     <li>
-      <router-link class="nav-link" href="#" :to="{ name: 'Search' }"
+      <router-link class="nav-link" href="#" :to="{ name: 'RoadSearch' }"
         ><img src="../assets/img/magnifier.png" alt="放大鏡小圖示"
       /></router-link>
     </li>

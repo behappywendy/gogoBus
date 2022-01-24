@@ -29,7 +29,7 @@
             /></router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Search' }">
+            <router-link class="nav-link" :to="{ name: 'RoadSearch' }">
               <img src="../assets/img/magnifier.png" alt="放大鏡小圖示" />
             </router-link>
           </li>
@@ -98,7 +98,6 @@ export default {
 }
 ul {
   list-style-type: none;
-  box-shadow: 3px 2px 6px rgba(121, 121, 121, 0.25);
 }
 li {
   width: 142px;
