@@ -19,9 +19,9 @@ const routes = [
     },
   },
   {
-    path: "/Search",
-    name: "Search",
-    component: () => import("../views/Search.vue"),
+    path: "/RoadSearch",
+    name: "RoadSearch",
+    component: () => import("../views/RoadSearch.vue"),
     mata: {
       title: "路線搜尋",
     },
