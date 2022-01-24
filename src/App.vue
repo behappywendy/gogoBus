@@ -74,7 +74,7 @@ h2 {
   font-weight: 700;
 }
 
-* {
-  outline: 1px solid red;
-}
+// * {
+//   outline: 1px solid red;
+// }
 </style>
