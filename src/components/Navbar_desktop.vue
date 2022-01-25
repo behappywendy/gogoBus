@@ -34,14 +34,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// * {
-//   outline: 1px solid red;
-// }
 .nav {
   background: var(--primary);
   display: none;
   text-align: center;
-  height: 900px;
   border-radius: 10px;
   li {
     width: 142px;

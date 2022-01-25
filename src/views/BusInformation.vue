@@ -23,7 +23,6 @@ export default {
 <style scoped lang="scss">
 .content {
   background: var(--content_background);
-  border-radius: 20px;
 }
 .wrap_button :first-child {
   border-radius: 20px 0px 0px 0px;

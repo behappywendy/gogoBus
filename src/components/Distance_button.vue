@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button class="button">
     <slot></slot>
   </button>
 </template>
@@ -17,5 +17,10 @@ button {
   color: var(--content_background);
   height: 32px;
   border: 0;
+}
+button:hover {
+  background: pink;
+  border-radius: 0px;
+  border: 2px solid green; 
 }
 </style>
