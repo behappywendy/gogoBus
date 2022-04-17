@@ -1,6 +1,7 @@
 <template>
   <h2>首頁</h2>
-  <!-- <h2>首頁</h2> -->
+  <p>{{ name }}</p>
+  <p>{{ title }}</p>
 </template>
 
 <script>
@@ -9,7 +10,10 @@ export default {
   components: {},
 
   data() {
-    return {};
+    return {
+      name: this.$store.state.user,
+      title: this.$store.state.title,
+    };
   },
 };
 </script>
