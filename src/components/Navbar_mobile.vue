@@ -21,7 +21,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <router-link
-              :to="{ name: 'busInformation' }"
+              :to="{ name: 'nearbyStation' }"
               cltouter-linkss="nav-link active"
               aria-current="page"
               href="#"

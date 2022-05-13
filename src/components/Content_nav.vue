@@ -1,12 +1,22 @@
 <template>
   <div>
-    <input type="text" placeholder="快速搜尋" />
+    <input
+      type="text"
+      placeholder="快速搜尋"
+      :value="searchText"
+      @input="searchText = $event.target.value"
+    />
     <nav><a href="#">BUS STOP</a>|<a href="#">附近站牌</a></nav>
   </div>
 </template>
 <script>
 export default {
   name: "ContentNav",
+  data() {
+    return {
+      searchText: "",
+    };
+  },
 };
 </script>
 <style scoped lang="scss">

@@ -2,17 +2,38 @@
   <li class="timetableList">
     <div>
       <i class="fas fa-arrow-circle-down"></i>
-      <p>中和保養</p>
+      <p>{{ title }}</p>
     </div>
     <div>
-      <p>未發車</p>
-      <p>FAA-073</p>
+      <p>{{ formateStatus }}</p>
+      <p v-if="estimateTime <= 180">進站中</p>
+      <p v-else>{{ formateEstimateTime }}</p>
     </div>
   </li>
 </template>
 <script>
 export default {
   name: "TimetableList",
+  props: ["title", "status", "estimateTime"],
+  //小於3秒進佔中
+  //車輛狀態備註 : [0:'正常',1:'尚未發車',2:'交管不停靠',3:'末班車已過',4:'今日未營運']
+  computed: {
+    formateStatus() {
+      const statusMapping = {
+        0: " ",
+        1: "尚未發車",
+        2: "交管不停靠",
+        3: "末班車已過",
+        4: "今日未營運",
+      };
+      return statusMapping[this.status];
+    },
+    formateEstimateTime() {
+      return this.estimateTime
+        ? Math.floor(this.estimateTime / 60) + "分鐘"
+        : " ";
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

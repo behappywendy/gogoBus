@@ -10,7 +10,7 @@
       >
     </li>
     <li>
-      <router-link class="nav-link" href="#" :to="{ name: 'busInformation' }"
+      <router-link class="nav-link" href="#" :to="{ name: 'nearbyStation' }"
         ><img src="../assets/img/map.png" alt="地圖小圖示"
       /></router-link>
     </li>

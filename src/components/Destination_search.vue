@@ -3,28 +3,38 @@
     <h2>where are you going</h2>
     <div class="select_city">
       <i class="fas fa-dot-circle fa-fw"></i>
-      <select class="city">
-        <option value="taipei">台北市</option>
-        <option value="tainan">台南市</option>
-        <option value="hsinchu">新竹市</option>
-      </select>
+      <DropDown
+        :options="cities"
+        :selectedValue="selectedCity"
+        @update:selectedValue="$emit('updated:selectedCity', $event)"
+      ></DropDown>
     </div>
     <div class="select_route">
       <i class="fas fa-map-marker-alt fa-fw"></i>
-      <select class="route">
-        <option>262路線</option>
-        <option>128路線</option>
-        <option>300路線</option>
-      </select>
+      <DropDown
+        :options="cityOfRouteList"
+        :selectedValue="selectedCity"
+        @update:selectedValue="$emit('updated:selectedRoute', $event)"
+      ></DropDown>
     </div>
-    <button>
+    <button @click="$emit('clickSearchButton')">
       <span>搜尋</span> <img src="../assets/img/magnifier.png" alt="" />
     </button>
   </div>
 </template>
 <script>
+import DropDown from "@/components/DropDown.vue";
 export default {
   name: "destination_search",
+  components: {
+    DropDown,
+  },
+  props: ["cities", "selectedCity", "cityOfRouteList"],
+  emits: ["updated:selectedCity", "updated:selectedRoute", "clickSearchButton"],
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
 <style scoped lang="scss">

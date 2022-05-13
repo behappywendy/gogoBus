@@ -11,9 +11,9 @@ const routes = [
     },
   },
   {
-    path: "/busInformation",
-    name: "busInformation",
-    component: () => import("../views/BusInformation.vue"),
+    path: "/nearbyStation",
+    name: "nearbyStation",
+    component: () => import("../views/nearbyStation.vue"),
     mata: {
       title: "附近站牌",
     },

@@ -1,13 +1,22 @@
 <template>
   <div class="timetable">
-    <DistanceButton>往公教住宅</DistanceButton>
-    <DistanceButton>往中和</DistanceButton>
-    <ul>
-      <TimetableList></TimetableList>
-      <TimetableList></TimetableList>
-      <TimetableList></TimetableList>
-      <TimetableList></TimetableList>
-      <TimetableList></TimetableList>
+    <DistanceButton @click="$emit('clickGoButton')"
+      >往{{ departureStopNameZh }}</DistanceButton
+    >
+    <DistanceButton @click="$emit('clickBackButton')"
+      >往{{ destinationStopNameZh }}</DistanceButton
+    >
+    <ul v-if="busTimetable.length ? true : false">
+      <TimetableList
+        v-for="item in busTimetable"
+        :key="item.StopID"
+        :title="item.StopName.Zh_tw"
+        :estimateTime="item.EstimateTime"
+        :status="item.StopStatus"
+      ></TimetableList>
+    </ul>
+    <ul v-else>
+      抱歉暫無資料
     </ul>
   </div>
 </template>
@@ -17,6 +26,14 @@ import TimetableList from "@/components/TimetableList.vue";
 export default {
   name: "Timetable",
   components: { DistanceButton, TimetableList },
+  props: ["departureStopNameZh", "destinationStopNameZh", "busTimetable"],
+  emits: ["clickGoButton", "clickBackButton"],
+  created() {},
+  data() {
+    return {};
+  },
+  methods: {},
+  computed: {},
 };
 </script>
 <style lang="scss" scoped>

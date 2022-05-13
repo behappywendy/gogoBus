@@ -19,7 +19,7 @@ export default {
     LatesNewsList,
   },
   async created() {
-    await this.$store.dispatch("getLatestInfoAPI");
+    this.$store.dispatch("getLatestInfoAPI");
   },
   computed: {
     latestNewsData() {

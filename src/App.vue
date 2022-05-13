@@ -29,13 +29,17 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import Navbardesktop from "@/components/Navbar_desktop.vue";
 import NavbarMobile from "@/components/Navbar_mobile.vue";
 import ContentNav from "@/components/Content_nav.vue";
+
 export default {
   components: { Navbardesktop, NavbarMobile, ContentNav },
-  // components: { Navbardesktop, NavbarMobile },
   data() {
     return {
       userTheme: "light-theme",
     };
+  },
+  async created() {
+    // await this.$store.dispatch("getCurrentPosition");
+    // await Api.getUserCity();
   },
 };
 </script>
@@ -51,6 +55,7 @@ export default {
 #app {
   background: var(--primary_background);
   min-width: 358px;
+  height: 100vh;
 }
 @media (min-width: 992px) {
   #app {
@@ -67,7 +72,6 @@ main {
     width: 992px;
   }
 }
-
 h2 {
   color: var(--text-color-gary900);
   font-size: 20px;

@@ -1,11 +1,13 @@
 <template>
-  <button class="button">
+  <button class="button" @click="$emit('clickDistanceButton', $event)">
     <slot></slot>
   </button>
 </template>
 <script>
 export default {
   name: "DistanceButton",
+  methods: {},
+  emits: ["clickDistanceButton"],
 };
 </script>
 <style lang="scss" scoped>
@@ -19,8 +21,8 @@ button {
   border: 0;
 }
 button:hover {
-  background: pink;
+  background: #ead7ad;
   border-radius: 0px;
-  border: 2px solid green; 
+  // color: pink;
 }
 </style>
