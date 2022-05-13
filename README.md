@@ -1,24 +1,22 @@
-# week3
+# GOGO BUS
 
-## Project setup
-```
-npm install
-```
+## 介紹:
+- [ ] 自動定位
+- [ ] 
+- [ ] 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 使用技術
+* vue cli
+* axios
+* vuex
+* Vue3 OpenLayers
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 第三方服務
+- ptxAPI
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 設計師
+
+[Tracy]([https://](https://2021.thef2e.com/users/6296427084285739806/))
+
+
