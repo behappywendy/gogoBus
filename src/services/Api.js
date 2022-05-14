@@ -55,14 +55,17 @@ export default {
     });
   },
   getCityOfRoute(city) {
-    return api.get(`MOTC/v2/Bus/Route/City/${city}?%24top=30&%24format=JSON`);
+    return api.get(`MOTC/v2/Bus/Route/City/${city}?%24format=JSON`);
   },
-  getRealTimeData(selectedCity, selectedRoute) {
+  getEstimatedTime(selectedCity, selectedRoute) {
     //預估到站資料批次更新
-    console.log("vuex", selectedCity, selectedRoute);
     //ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/307?%24top=30&%24format=JSON
     return api.get(
-      `MOTC/v2/Bus/EstimatedTimeOfArrival/City/${selectedCity}/${selectedRoute}?%24top=30&%24format=JSON`
+      `MOTC/v2/Bus/EstimatedTimeOfArrival/City/${selectedCity}/${selectedRoute}?%24format=JSON`
     );
+  },
+  realTimeByFrequency(selectedCity, selectedRoute) {
+    return api.get(`https://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/${selectedCity}/${selectedRoute}?%24format=JSON
+    `);
   },
 };

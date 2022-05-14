@@ -34,6 +34,8 @@ export default {
   background: var(--content_background);
   border-radius: 16px;
   padding: 53px 75px;
+  max-height: 800px;
+  overflow: auto;
 }
 h2 {
   color: var(--text-color-gary900);

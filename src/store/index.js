@@ -11,7 +11,8 @@ export default createStore({
     city: "Taipei",
     nearbyBusStop: [],
     cityOfRoute: [],
-    realTimeData: [],
+    estimatedTime: [],
+    realTimeByFrequency: [],
   },
   mutations: {
     getLatestInfo(state, latestNews) {
@@ -32,8 +33,11 @@ export default createStore({
     updateCityOfRoute(state, allRouteData) {
       state.cityOfRoute = allRouteData;
     },
-    updateRealTimeData(state, data) {
-      state.realTimeData = data;
+    updateEstimatedTime(state, data) {
+      state.estimatedTime = data;
+    },
+    updateRealTimeByFrequency(state, data) {
+      state.realTimeByFrequency = data;
     },
   },
   actions: {
@@ -66,10 +70,19 @@ export default createStore({
       console.log("getCityOfRoute", allRouteData);
       commit("updateCityOfRoute", allRouteData.data);
     },
-    async getRealTimeData({ commit }, selectedData) {
+    //剩幾分鐘到
+    async getEstimatedTime({ commit }, selectedData) {
       const { selectedCity, selectedRoute } = selectedData;
-      const response = await Api.getRealTimeData(selectedCity, selectedRoute);
-      commit("updateRealTimeData", response.data);
+      const response = await Api.getEstimatedTime(selectedCity, selectedRoute);
+      commit("updateEstimatedTime", response.data);
+    },
+    async getRealTimeByFrequency({ commit }, selectedData) {
+      const { selectedCity, selectedRoute } = selectedData;
+      const response = await Api.realTimeByFrequency(
+        selectedCity,
+        selectedRoute
+      );
+      commit("updateRealTimeByFrequency", response.data);
     },
   },
   getters: {
@@ -101,8 +114,11 @@ export default createStore({
     cityOfRoute(state) {
       return state.cityOfRoute;
     },
-    realTimeData(state) {
-      return state.realTimeData;
+    estimatedTime(state) {
+      return state.estimatedTime;
+    },
+    realTimeByFrequency(state) {
+      return state.realTimeByFrequency;
     },
   },
 });

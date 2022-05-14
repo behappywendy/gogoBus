@@ -8,7 +8,7 @@
       @updated:selectedRoute="selectedRoute = $event"
       @clickSearchButton="clickSearchButton"
     ></DestinationSearch>
-    <Map></Map>
+    <BusMap :currentRealTimeByFrequency="currentRealTimeByFrequency"></BusMap>
     <Timetable
       @clickBackButton="back"
       @clickGoButton="go"
@@ -23,13 +23,12 @@
 import cities from "@/assets/data/city.json";
 import DestinationSearch from "@/components/Destination_search.vue";
 import Timetable from "@/components/Timetable.vue";
-// import Api from "@/services/Api.js";
-import Map from "@/components/Map.vue";
+import BusMap from "@/components/BusMap.vue";
 export default {
   components: {
     DestinationSearch,
     Timetable,
-    Map,
+    BusMap,
   },
   props: [],
   async created() {
@@ -41,32 +40,55 @@ export default {
       selectedCity: "Taipei",
       selectedRoute: "234 ",
       busTimetable: [],
+      direction: 0,
     };
   },
   methods: {
-    clickSearchButton() {
-      this.$store.dispatch("getRealTimeData", {
+    async clickSearchButton() {
+      //發realtimeApi取得進站時間
+      await this.$store.dispatch("getEstimatedTime", {
         selectedCity: this.selectedCity,
         selectedRoute: this.selectedRoute,
       });
-      this.go();
+      await this.$store.dispatch("getRealTimeByFrequency", {
+        selectedCity: this.selectedCity,
+        selectedRoute: this.selectedRoute,
+      });
+      this.busTimetable = [...this.currentEstimatedTime];
     },
     go() {
-      const result =
-        this.realTimeData.filter((item) => {
-          return item.Direction === 0;
-        }) ?? [];
-      this.busTimetable = result;
+      this.direction = 0;
+      this.busTimetable = [...this.currentEstimatedTime];
     },
     back() {
-      const result =
-        this.realTimeData.filter((item) => {
-          return item.Direction === 1;
-        }) ?? [];
-      this.busTimetable = result;
+      this.direction = 1;
+      this.busTimetable = [...this.currentEstimatedTime];
     },
   },
   computed: {
+    realTimeByFrequency() {
+      return this.$store.getters.realTimeByFrequency;
+    },
+    estimatedTime() {
+      return this.$store.getters.estimatedTime;
+    },
+    currentRealTimeByFrequency() {
+      return this.realTimeByFrequency.filter((element) => {
+        return (
+          element.RouteName.Zh_tw === this.selectedRoute &&
+          element.Direction === this.direction
+        );
+      });
+    },
+    currentEstimatedTime() {
+      return this.estimatedTime.filter((element) => {
+        return (
+          element.RouteName.Zh_tw === this.selectedRoute &&
+          element.Direction === this.direction
+        );
+      });
+    },
+
     cities() {
       return cities.map((city) => ({
         label: city.CityName,
@@ -85,18 +107,18 @@ export default {
         value: item.RouteName.Zh_tw,
       }));
     },
-    realTimeData() {
-      return this.$store.getters.realTimeData;
-    },
+    // realTimeData() {
+    //   return this.$store.getters.realTimeData;
+    // },
     currentRoutesData() {
       //會根據點選資料
       //find路線
       //起始站-終點站
-      return (
+      const data =
         this.$store.getters.cityOfRoute.filter((item) => {
           return item.RouteName.Zh_tw === this.selectedRoute;
-        }) ?? []
-      );
+        }) ?? [];
+      return data;
     },
     busTerminus() {
       const result =

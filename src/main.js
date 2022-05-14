@@ -6,3 +6,5 @@ import OpenLayersMap from "vue3-openlayers";
 import "vue3-openlayers/dist/vue3-openlayers.css";
 
 createApp(App).use(store).use(router).use(OpenLayersMap).mount("#app");
+
+// document.title = "公車首頁 ";

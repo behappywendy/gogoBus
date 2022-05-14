@@ -79,7 +79,9 @@ export default {
   background: var(--primary-light);
 }
 .warp_card {
+  height: 800px;
   padding: 30px;
+  overflow: auto;
 }
 .warp_card .bus_list:nth-child(odd) {
   background: var(--card_odd_background);

@@ -8,8 +8,8 @@
     >
     <ul v-if="busTimetable.length ? true : false">
       <TimetableList
-        v-for="item in busTimetable"
-        :key="item.StopID"
+        v-for="(item, index) in busTimetable"
+        :key="index"
         :title="item.StopName.Zh_tw"
         :estimateTime="item.EstimateTime"
         :status="item.StopStatus"
@@ -49,14 +49,17 @@ export default {
   border-radius: 0px 16px 0px 0px;
 }
 
-ul li:nth-child(odd) {
-  background: var(--timetable_li_odd);
+ul {
+  max-height: 200px;
+  li {
+    &:nth-child(odd) {
+      background: var(--timetable_li_odd);
+    }
+  }
+  li {
+    &:nth-child(even) {
+      background: var(--timetable_li_even);
+    }
+  }
 }
-ul li:nth-child(even) {
-  background: var(--timetable_li_even);
-}
-
-// * {
-//   outline: 1px solid red;
-// }
 </style>
