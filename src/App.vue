@@ -48,6 +48,9 @@ export default {
 @use "node_modules/bootstrap/scss/bootstrap.scss";
 
 * {
+  // outline: 1px solid red;
+}
+* {
   padding: 0;
   margin: 0;
 }
@@ -69,7 +72,7 @@ main {
 }
 @media (min-width: 992px) {
   main {
-    width: 992px;
+    min-width: 1024px;
   }
 }
 h2 {
