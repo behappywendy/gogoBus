@@ -1,37 +1,40 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  //   meta: {
+  //     title: "公車首頁",
+  //   },
+  // },
   {
     path: "/",
-    name: "Home",
-    component: Home,
-    meta: {
-      title: "公車首頁",
-    },
-  },
-  {
-    path: "/nearbyStation",
     name: "nearbyStation",
     component: () => import("../views/nearbyStation.vue"),
-    mata: {
+    meta: {
       title: "附近站牌",
+      en: "BUS STOP",
     },
   },
   {
     path: "/RoadSearch",
     name: "RoadSearch",
     component: () => import("../views/RoadSearch.vue"),
-    mata: {
+    meta: {
       title: "路線搜尋",
+      en: "ROAD SEARCH",
     },
   },
   {
     path: "/LatestNews",
     name: "LatestNews",
     component: () => import("../views/LatestNews.vue"),
-    mata: {
+    meta: {
       title: "最新消息",
+      en: "LATEST NEWS",
     },
   },
 ];

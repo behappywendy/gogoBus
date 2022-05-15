@@ -1,12 +1,15 @@
 <template>
   <div>
-    <input
+    <!-- <input
       type="text"
       placeholder="快速搜尋"
       :value="searchText"
       @input="searchText = $event.target.value"
-    />
-    <nav><a href="#">BUS STOP</a>|<a href="#">附近站牌</a></nav>
+    /> -->
+    <nav>
+      <a href="#">{{ $route.meta.en }}</a
+      >|<a href="#">{{ $route.meta.title }}</a>
+    </nav>
   </div>
 </template>
 <script>
@@ -17,6 +20,7 @@ export default {
       searchText: "",
     };
   },
+  methods: {},
 };
 </script>
 <style scoped lang="scss">

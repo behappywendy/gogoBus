@@ -14,6 +14,7 @@ export default {
   props: ["title", "stops"],
 };
 </script>
+//
 <style scoped lang="scss">
 .bus_list {
   h2 {

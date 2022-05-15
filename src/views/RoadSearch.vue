@@ -157,7 +157,7 @@ export default {
   border-radius: 16px;
   display: grid;
   grid-gap: 42px;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 2fr);
   > div {
     border-radius: 16px;
   }
@@ -166,7 +166,7 @@ export default {
 @media (min-width: 992px) {
   .content {
     grid-gap: 28px;
-    grid-template-columns: repeat(2, 800px);
+    grid-template-columns: repeat(2, 2fr);
     grid-template-rows: repeat(2, 300px);
   }
 }

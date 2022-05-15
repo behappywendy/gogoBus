@@ -31,34 +31,32 @@ import NavbarMobile from "@/components/Navbar_mobile.vue";
 import ContentNav from "@/components/Content_nav.vue";
 
 export default {
-  components: { Navbardesktop, NavbarMobile, ContentNav },
+  components: {
+    Navbardesktop,
+    NavbarMobile,
+    ContentNav,
+  },
   data() {
-    return {
-      userTheme: "light-theme",
-    };
+    return {};
   },
-  async created() {
-    // await this.$store.dispatch("getCurrentPosition");
-    // await Api.getUserCity();
-  },
+  created() {},
 };
 </script>
 
 <style lang="scss">
 @use "node_modules/bootstrap/scss/bootstrap.scss";
 
-* {
-  // outline: 1px solid red;
-}
-* {
-  padding: 0;
-  margin: 0;
-}
+// * {
+//   outline: 1px solid red;
+// }
 
 #app {
   background: var(--primary_background);
-  min-width: 358px;
-  height: 100vh;
+}
+@media (min-width: 1200) {
+  #app {
+    height: 100vh;
+  }
 }
 @media (min-width: 992px) {
   #app {
@@ -66,22 +64,25 @@ export default {
   }
 }
 main {
-  padding: 50px;
   margin: 0 auto;
-  min-width: 300px;
+  // min-width: 400px;
+  margin-top: 100px;
+  background: var(--primary_background);
 }
 @media (min-width: 992px) {
   main {
-    min-width: 1024px;
+    margin-top: 0px;
+    min-width: 992px;
+    min-height: 100vh;
+    padding: 50px;
   }
+}
+.wrap_content {
+  border-radius: 20px;
 }
 h2 {
   color: var(--text-color-gary900);
   font-size: 20px;
   font-weight: 700;
 }
-
-// * {
-//   outline: 1px solid red;
-// }
 </style>

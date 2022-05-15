@@ -11,7 +11,6 @@
       ></LatesNewsList>
     </ul>
   </div>
-  <main></main>
 </template>
 <script>
 import LatesNewsList from "@/components/LatesNewsList.vue";

@@ -88,7 +88,7 @@ export default {
 }
 
 .warp_card {
-  height: 800px;
+  height: 500px;
   padding: 30px;
   overflow: auto;
 

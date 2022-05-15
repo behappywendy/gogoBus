@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar_mobile">
     <button
       class="navbar-toggler"
       type="button"
@@ -13,10 +13,10 @@
     </button>
 
     <div class="container-fluid">
-      <router-link :to="{ name: 'Home' }"
-        ><img src="../assets/img/bus.png" alt="公車小圖示" />
+      <a href="">
+        <img src="../assets/img/bus.png" alt="公車小圖示" />
         <p>GO GO Bus</p>
-      </router-link>
+      </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -53,9 +53,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// * {
-//   border: 1px solid red;
-// }
 .navbar {
   background: var(--primary);
   > div {
@@ -92,6 +89,7 @@ export default {
 }
 .navbar-nav {
   flex-direction: column;
+  box-shadow: 0;
 }
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav {
@@ -100,7 +98,7 @@ export default {
 }
 ul {
   list-style-type: none;
-  box-shadow: 3px 2px 6px rgba(121, 121, 121, 0.25);
+  // box-shadow: 3px 2px 6px rgba(121, 121, 121, 0.25);
 }
 li {
   width: 142px;
