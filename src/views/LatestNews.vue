@@ -1,7 +1,8 @@
 <template>
   <div class="content">
     <h2>最新消息</h2>
-    <ul>
+    <div class="loading" v-if="isLoading"></div>
+    <ul v-else>
       <LatesNewsList
         v-for="(NewsData, index) in latestNewsData"
         :key="index"
@@ -19,7 +20,13 @@ export default {
     LatesNewsList,
   },
   async created() {
-    this.$store.dispatch("getLatestInfoAPI");
+    await this.$store.dispatch("getLatestInfoAPI");
+    this.isLoading = false;
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
   },
   computed: {
     latestNewsData() {
@@ -41,10 +48,16 @@ h2 {
   color: var(--text-color-gary900);
   margin-bottom: 20px;
 }
-ul li:nth-child(odd) {
-  background: var(--card_even_background);
+ul li {
+  &:nth-child(odd) {
+    background: var(--card_even_background);
+  }
+  &:nth-child(even) {
+    background: var(--card_odd_background);
+  }
 }
-ul li:nth-child(even) {
-  background: var(--card_odd_background);
+.loading {
+  height: 300px;
+  @extend %loading;
 }
 </style>

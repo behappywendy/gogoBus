@@ -5,6 +5,7 @@ module.exports = {
         prependData: `
         @use "@/assets/scss/_theme.scss";
         @use "@/assets/scss/_reset.scss";
+        @use "@/assets/scss/_loading.scss";  
         `,
       },
     },

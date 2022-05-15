@@ -8,7 +8,10 @@
       @updated:selectedRoute="selectedRoute = $event"
       @clickSearchButton="clickSearchButton"
     ></DestinationSearch>
-    <BusMap :currentRealTimeByFrequency="currentRealTimeByFrequency"></BusMap>
+    <BusMap
+      :currentRealTimeByFrequency="currentRealTimeByFrequency"
+      :center="center"
+    ></BusMap>
     <Timetable
       @clickBackButton="back"
       @clickGoButton="go"
@@ -41,6 +44,7 @@ export default {
       selectedRoute: "234 ",
       busTimetable: [],
       direction: 0,
+      center: [121.517055, 25.047675],
     };
   },
   methods: {
@@ -55,13 +59,25 @@ export default {
         selectedRoute: this.selectedRoute,
       });
       this.busTimetable = [...this.currentEstimatedTime];
+      this.go();
+      //找出中心位置視角
+      const positionLon =
+        this.currentRealTimeByFrequency[0]?.BusPosition.PositionLon ||
+        121.517055;
+
+      const positionLat =
+        this.currentRealTimeByFrequency[0]?.BusPosition.PositionLat ||
+        25.047675;
+      this.center = [positionLon, positionLat];
     },
     go() {
-      this.direction = 0;
+      //去程是1
+      this.direction = 1;
       this.busTimetable = [...this.currentEstimatedTime];
     },
     back() {
-      this.direction = 1;
+      //回程是0
+      this.direction = 0;
       this.busTimetable = [...this.currentEstimatedTime];
     },
   },
@@ -150,7 +166,7 @@ export default {
 @media (min-width: 992px) {
   .content {
     grid-gap: 28px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 500px);
     grid-template-rows: repeat(2, 300px);
   }
 }

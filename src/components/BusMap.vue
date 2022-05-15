@@ -1,7 +1,5 @@
 <template>
-  <p @click="show">currentRealTimeByFrequency</p>
-  <!-- 如果currentRealTimeByFrequency沒有資料 -->
-  <ol-map style="height: 100%">
+  <ol-map style="height: 100%" class="map">
     <ol-view
       ref="view"
       :center="center"
@@ -52,12 +50,12 @@
     </ol-vector-layer>
   </ol-map>
 
-  <div>
+  <!-- <div>
     <p>center : {{ currentCenter }}</p>
     <p>zoom : {{ currentZoom }}</p>
     <p>resolution : {{ currentResolution }}</p>
     <p>rotation : {{ currentRotation }}</p>
-  </div>
+  </div> -->
 </template>
 <script>
 // api /RealTimeByFrequency/City/{City}
@@ -67,10 +65,10 @@ import markerIcon from "@/assets/img/markerIcon.png";
 
 export default {
   name: "BusMap",
-  props: ["currentRealTimeByFrequency"],
+  props: ["currentRealTimeByFrequency", "center"],
   data() {
     return {
-      center: [121.517055, 25.047675],
+      // center: [121.517055, 25.047675],
       projection: "EPSG:4326",
       zoom: 10,
       rotation: 0,
@@ -96,23 +94,6 @@ export default {
     },
     rotationChanged(rotation) {
       this.currentRotation = rotation;
-    },
-    show() {
-      console.log("show", this.currentRealTimeByFrequency);
-      if (this.currentRealTimeByFrequency) {
-        console.log("有資料");
-        const positionLon =
-          this.currentRealTimeByFrequency[0]?.BusPosition.PositionLon ||
-          121.517055;
-
-        const positionLat =
-          this.currentRealTimeByFrequency[0]?.BusPosition.PositionLat ||
-          25.047675;
-        this.center = [positionLon, positionLat];
-        return;
-      }
-      console.log("沒有資料");
-      this.center = [121.517055, 25.047675];
     },
   },
 };

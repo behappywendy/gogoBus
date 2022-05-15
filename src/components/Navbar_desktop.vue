@@ -1,13 +1,17 @@
 <template>
   <ul class="nav flex-column">
-    <li>
-      <router-link
+    <li @click="clickDarkMode">
+      <!-- <router-link
         class="nav-link active"
         aria-current="page"
         :to="{ name: 'Home' }"
         ><img src="../assets/img/bus.png" alt="公車小圖示" />
         <p>GO GO Bus</p></router-link
-      >
+      > -->
+      <a class="nav-link" href="#">
+        <img src="../assets/img/bus.png" alt="公車小圖示" />
+        <p>GO GO Bus</p>
+      </a>
     </li>
     <li>
       <router-link class="nav-link" href="#" :to="{ name: 'nearbyStation' }"
@@ -31,6 +35,15 @@
 <script>
 export default {
   name: "Navbardesktop",
+  data() {
+    return {};
+  },
+  methods: {
+    clickDarkMode() {
+      const body = document.querySelector("html");
+      body.classList.toggle("dark");
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -45,6 +58,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  a {
+    display: inline-block;
   }
   p {
     font-family: "Mochiy Pop P One", sans-serif;

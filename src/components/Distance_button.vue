@@ -21,8 +21,8 @@ button {
   border: 0;
 }
 button:hover {
-  background: #ead7ad;
+  background: #99badd;
   border-radius: 0px;
-  // color: pink;
+  color: #363636;
 }
 </style>

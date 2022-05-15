@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <p>city{{ this.$store.state.city }}</p>
-    <span>緯度{{ latitude }}</span>
-    <span>經度{{ longitude }}</span>
+    <!-- <p>city{{ this.$store.state.city }}</p> -->
+    <!-- <span>緯度{{ latitude }}</span> -->
+    <!-- <span>經度{{ longitude }}</span> -->
     <div class="wrap_button">
       <DistanceButton class="primary" @click="clickDistanceButton"
         >800m</DistanceButton
@@ -11,7 +11,8 @@
         >1000m</DistanceButton
       >
     </div>
-    <div class="warp_card">
+    <div class="loading" v-if="isLoading"></div>
+    <div class="warp_card" v-else>
       <Card
         v-for="(busStop, index) in nearbyBusStop"
         :key="index"
@@ -36,9 +37,12 @@ export default {
       longitude: this.longitude,
       distance: 800,
     });
+    this.isLoading = false;
   },
   data() {
-    return {};
+    return {
+      isLoading: true,
+    };
   },
   computed: {
     latitude() {
@@ -66,27 +70,40 @@ export default {
 .content {
   background: var(--content_background);
 }
-.wrap_button :first-child {
-  border-radius: 20px 0px 0px 0px;
+
+.wrap_button {
+  & :first-child {
+    border-radius: 20px 0px 0px 0px;
+  }
+  & :last-child {
+    border-radius: 0px 20px 0px 0px;
+  }
 }
-.wrap_button :last-child {
-  border-radius: 0px 20px 0px 0px;
-}
+
 .primary {
   background: var(--primary);
+  &_light {
+    background: var(--primary-light);
+  }
 }
-.primary_light {
-  background: var(--primary-light);
-}
+
 .warp_card {
   height: 800px;
   padding: 30px;
   overflow: auto;
+
+  .bus_list {
+    &:nth-child(odd) {
+      background: var(--card_odd_background);
+    }
+    &:nth-child(even) {
+      background: var(--card_even_background);
+    }
+  }
 }
-.warp_card .bus_list:nth-child(odd) {
-  background: var(--card_odd_background);
-}
-.warp_card .bus_list:nth-child(even) {
-  background: var(--card_even_background);
+
+.loading {
+  height: 300px;
+  @extend %loading;
 }
 </style>
