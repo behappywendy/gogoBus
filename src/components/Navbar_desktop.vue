@@ -1,13 +1,6 @@
 <template>
   <ul class="nav flex-column">
     <li @click="clickDarkMode">
-      <!-- <router-link
-        class="nav-link active"
-        aria-current="page"
-        :to="{ name: 'Home' }"
-        ><img src="../assets/img/bus.png" alt="公車小圖示" />
-        <p>GO GO Bus</p></router-link
-      > -->
       <a class="nav-link" href="#">
         <img src="../assets/img/bus.png" alt="公車小圖示" />
         <p>GO GO Bus</p>
@@ -30,19 +23,25 @@
           alt="最新消息小圖示"
       /></router-link>
     </li>
+    <li><a-switch v-model:checked="checked" /></li>
   </ul>
 </template>
 <script>
+import { ref, watch } from "vue";
 export default {
   name: "Navbardesktop",
-  data() {
-    return {};
-  },
-  methods: {
-    clickDarkMode() {
+  setup() {
+    const checked = ref(false);
+    function clickDarkMode() {
       const body = document.querySelector("html");
       body.classList.toggle("dark");
-    },
+    }
+    watch(checked, () => {
+      clickDarkMode();
+    });
+    return {
+      checked,
+    };
   },
 };
 </script>
