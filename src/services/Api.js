@@ -37,9 +37,9 @@ function getAuthorizationHeader() {
 }
 
 export default {
-  getCity(lon, lat) {
+  getCity(lat, lon) {
     return axios.get(
-      `http://nominatim.openstreetmap.org/reverse?format=json&lon=${lon}&lat=${lat}`
+      `https://nominatim.openstreetmap.org/reverse?format=json&lon=${lon}&lat=${lat}`
     );
   },
   getBusNews(city) {

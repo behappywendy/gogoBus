@@ -19,6 +19,8 @@ export default {
     LatesNewsList,
   },
   async created() {
+    await this.$store.dispatch("getCurrentPosition");
+    await this.$store.dispatch("getCity");
     await this.$store.dispatch("getLatestInfoAPI");
     this.isLoading = false;
   },

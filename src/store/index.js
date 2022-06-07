@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import Api from "@/services/Api.js";
-
+import cities from "@/assets/data/city.json";
 export default createStore({
   state: {
     user: "wendy",
@@ -41,6 +41,17 @@ export default createStore({
     },
   },
   actions: {
+    async getCity({ state }) {
+      const getLocationCity = await Api.getCity(
+        state.latitude,
+        state.longitude
+      );
+      const result = cities.find((city) => {
+        return city.CityName == getLocationCity.data.address.city;
+      });
+
+      state.city = result.City ?? "Taipei";
+    },
     async getCurrentPosition({ commit }) {
       const position = await new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(async function (position) {
@@ -53,6 +64,7 @@ export default createStore({
       });
     },
     async getLatestInfoAPI({ commit, state }) {
+      console.log(state.city);
       const latestNews = await Api.getBusNews(state.city);
       commit("getLatestInfo", latestNews.data);
     },
@@ -63,6 +75,7 @@ export default createStore({
         longitude,
         distance
       );
+      console.log(nearbyBusStop);
       commit("updateNearByBusStop", nearbyBusStop.data);
     },
     async getCityOfRoute({ commit }, city) {
