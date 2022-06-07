@@ -5,18 +5,24 @@
 - 查詢各縣市公車路線
 - 查詢各縣市站點資訊
 - 回報到站時間
-- 公車最新消息
+- 所在位置的公車最新消息
 - 地圖顯示站牌位置
 - 具有夜間模式
+![](https://i.imgur.com/n4MwPRv.png)
+  ![](https://i.imgur.com/VuTPZ2b.png)
 
 ## 使用技術
 * vue cli
 * axios
 * vuex
 * Vue3 OpenLayers
+* ant-Design
 
 ## 第三方服務
 - ptxAPI
+
+
+
 
 
 ### 設計師
