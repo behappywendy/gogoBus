@@ -69,6 +69,7 @@ export default {
 <style scoped lang="scss">
 .content {
   background: var(--content_background);
+  border-radius: 30px;
 }
 
 .wrap_button {

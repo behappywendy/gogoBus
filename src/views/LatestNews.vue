@@ -40,10 +40,10 @@ export default {
 <style lang="scss" scoped>
 .content {
   background: var(--content_background);
-  border-radius: 16px;
   padding: 53px 75px;
   max-height: 800px;
   overflow: auto;
+  border-radius: 50px;
 }
 h2 {
   color: var(--text-color-gary900);
